@@ -41,10 +41,10 @@
 
 #define PS_ON_PIN                          PC13  // Power Supply Control
 
-#define FAN1_PIN                           PC7
+#define FAN1_PIN                           PC7 //CONTROLLER FAN also used in Config_adv.h as E0 fan
 
 #ifndef CONTROLLER_FAN_PIN
-  #define CONTROLLER_FAN_PIN               FAN1_PIN
+  #define CONTROLLER_FAN_PIN               PC7 //FAN1_PIN
 #endif
 
 /**
