@@ -90,8 +90,8 @@
 //
 // Heaters / Fans
 //
-#define HEATER_0_PIN                        PC8   // "HE"
-#define HEATER_BED_PIN                      PC9   // "HB"
+#define HEATER_0_PIN                        PC9   // "HE" //switched from PC8 to PC9 b/c mosffet is broken. this is now "HB"
+#define HEATER_BED_PIN                      PC8   // "HB" //see note above. this is now "HE"
 
 #ifdef SKR_MINI_E3_V2
   #define FAN_PIN                           PC6
