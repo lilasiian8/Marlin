@@ -55,16 +55,20 @@ public:
   static void WriteVariable(uint16_t adr, const void* values, uint8_t valueslen, bool isstr=false);
   static void WriteVariablePGM(uint16_t adr, const void* values, uint8_t valueslen, bool isstr=false);
 <<<<<<< HEAD
+<<<<<<< HEAD
   static void WriteVariable(uint16_t adr, int16_t value);
   static void WriteVariable(uint16_t adr, uint16_t value);
   static void WriteVariable(uint16_t adr, uint8_t value);
   static void WriteVariable(uint16_t adr, int8_t value);
   static void WriteVariable(uint16_t adr, long value);
 =======
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
   template<typename T>
   static void WriteVariable(uint16_t adr, T value) {
     WriteVariable(adr, static_cast<const void*>(&value), sizeof(T));
   }
+<<<<<<< HEAD
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 
   // Utility functions for bridging ui_api and dbus
@@ -78,6 +82,8 @@ public:
     uint16_t newvalue = swap16(*(uint16_t*)val_ptr);
     Setter(newvalue, selector);
   }
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 
   // Until now I did not need to actively read from the display. That's why there is no ReadVariable
   // (I extensively use the auto upload of the display)

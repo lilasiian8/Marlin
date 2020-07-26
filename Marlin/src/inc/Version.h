@@ -43,7 +43,11 @@
  */
 #ifndef STRING_DISTRIBUTION_DATE
 <<<<<<< HEAD
+<<<<<<< HEAD
   #define STRING_DISTRIBUTION_DATE "2020-07-25"
+=======
+  #define STRING_DISTRIBUTION_DATE "2020-07-17"
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 =======
   #define STRING_DISTRIBUTION_DATE "2020-07-17"
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro

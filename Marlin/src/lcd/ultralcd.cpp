@@ -899,6 +899,7 @@ void MarlinUI::update() {
         RESET_STATUS_TIMEOUT();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       uint8_t abs_diff = ABS(encoderDiff);
 
       #if ENCODER_PULSES_PER_STEP > 1
@@ -920,6 +921,8 @@ void MarlinUI::update() {
 
       const bool encoderPastThreshold = (abs_diff >= epps);
 =======
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
       const float abs_diff = ABS(encoderDiff);
       const bool encoderPastThreshold = (abs_diff >= (ENCODER_PULSES_PER_STEP));
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
@@ -932,7 +935,11 @@ void MarlinUI::update() {
 
             if (encoderRateMultiplierEnabled) {
 <<<<<<< HEAD
+<<<<<<< HEAD
               const float encoderMovementSteps = float(abs_diff) / epps;
+=======
+              const float encoderMovementSteps = abs_diff / (ENCODER_PULSES_PER_STEP);
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 =======
               const float encoderMovementSteps = abs_diff / (ENCODER_PULSES_PER_STEP);
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
@@ -1556,7 +1563,11 @@ void MarlinUI::update() {
                    ydir = row < (LCD_HEIGHT) / 2 ? -1 : 1;
       if (on_edit_screen)
 <<<<<<< HEAD
+<<<<<<< HEAD
         encoderDiff = epps * ydir;
+=======
+        encoderDiff = ENCODER_PULSES_PER_STEP * ydir;
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 =======
         encoderDiff = ENCODER_PULSES_PER_STEP * ydir;
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
@@ -1565,6 +1576,7 @@ void MarlinUI::update() {
         if (col > (LCD_WIDTH) - 5)
           // 2 * LCD_HEIGHT to scroll to bottom of next page. (LCD_HEIGHT would only go 1 item down.)
 <<<<<<< HEAD
+<<<<<<< HEAD
           encoderDiff = epps * (encoderLine - encoderTopLine + 2 * (LCD_HEIGHT)) * ydir;
         else
           encoderDiff = epps * (row - encoderPosition + encoderTopLine);
@@ -1572,12 +1584,17 @@ void MarlinUI::update() {
       else if (!on_status_screen())
         encoderDiff = epps * xdir;
 =======
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
           encoderDiff = ENCODER_PULSES_PER_STEP * (encoderLine - encoderTopLine + 2 * (LCD_HEIGHT)) * ydir;
         else
           encoderDiff = ENCODER_PULSES_PER_STEP * (row - encoderPosition + encoderTopLine);
       }
       else if (!on_status_screen())
         encoderDiff = ENCODER_PULSES_PER_STEP * xdir;
+<<<<<<< HEAD
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
+=======
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
     }
 

@@ -586,9 +586,12 @@ unsigned int getTickDiff(unsigned int curTick, unsigned int lastTick) {
 
   #if USE_XPT2046
 <<<<<<< HEAD
+<<<<<<< HEAD
     #ifndef XPT2046_HOR_RES
       #define XPT2046_HOR_RES 480
 =======
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
     #ifndef XPT2046_HOR_RES   480
       #define XPT2046_HOR_RES   480
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro

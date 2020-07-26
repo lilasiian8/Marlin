@@ -509,8 +509,11 @@
 #elif MB(MKS_ROBIN_NANO)
   #include "stm32f1/pins_MKS_ROBIN_NANO.h"      // STM32F1                                env:mks_robin_nano env:mks_robin_nano35
 <<<<<<< HEAD
+<<<<<<< HEAD
 #elif MB(MKS_ROBIN_NANO_V2)
   #include "stm32f1/pins_MKS_ROBIN_NANO_V2.h"   // STM32F1                                env:mks_robin_nano env:mks_robin_nano35
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 =======
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 #elif MB(MKS_ROBIN_LITE)

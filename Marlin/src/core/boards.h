@@ -338,6 +338,9 @@
 #define BOARD_CHITU3D_V5              4030  // Chitu3D TronXY X5SA V5 Board
 #define BOARD_CHITU3D_V6              4031  // Chitu3D TronXY X5SA V5 Board
 #define BOARD_CREALITY_V4             4032  // Creality v4.x (STM32F103RE)
+<<<<<<< HEAD
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
+=======
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 
 //

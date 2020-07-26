@@ -2220,9 +2220,13 @@ static_assert(hbm[Z_AXIS] >= 0, "HOMING_BUMP_MM.Z must be greater than or equal 
   + ENABLED(MALYAN_LCD) \
   + ENABLED(TOUCH_UI_FTDI_EVE) \
 <<<<<<< HEAD
+<<<<<<< HEAD
   + ENABLED(FSMC_GRAPHICAL_TFT) \
   + ENABLED(TFT_LVGL_UI_FSMC) \
   + ENABLED(TFT_LVGL_UI_SPI)
+=======
+  + ENABLED(FSMC_GRAPHICAL_TFT)
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 =======
   + ENABLED(FSMC_GRAPHICAL_TFT)
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro

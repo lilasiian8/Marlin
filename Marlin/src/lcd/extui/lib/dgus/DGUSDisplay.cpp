@@ -1181,6 +1181,7 @@ void DGUSDisplay::WriteVariable(uint16_t adr, const void* values, uint8_t values
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void DGUSDisplay::WriteVariable(uint16_t adr, uint16_t value) {
   value = (value & 0xffU) << 8U | (value >> 8U);
   WriteVariable(adr, static_cast<const void*>(&value), sizeof(uint16_t));
@@ -1210,6 +1211,8 @@ void DGUSDisplay::WriteVariable(uint16_t adr, long value) {
     WriteVariable(adr, static_cast<const void*>(&tmp), sizeof(long));
 }
 
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 =======
 >>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 void DGUSDisplay::WriteVariablePGM(uint16_t adr, const void* values, uint8_t valueslen, bool isstr) {
