@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -41,7 +41,8 @@
   }
 
   bool SDIO_Init() {
-    return hsd.State == HAL_SD_STATE_READY;  // return pass/fail status
+    if (hsd.State == HAL_SD_STATE_READY) return 1;  // return passing status
+    return 0;                                       // return failing status
   }
 
   bool SDIO_ReadBlock(uint32_t block, uint8_t *src) {
@@ -57,6 +58,7 @@
 #else // !USBD_USE_CDC_COMPOSITE
 
   // use local drivers
+
   #if defined(STM32F103xE) || defined(STM32F103xG)
     #include <stm32f1xx_hal_rcc_ex.h>
     #include <stm32f1xx_hal_sd.h>
@@ -272,6 +274,7 @@
   bool SDIO_WriteBlock(uint32_t block, const uint8_t *src) {
     hsd.Instance = SDIO;
     uint8_t retryCnt = SD_RETRY_COUNT;
+
     bool status;
     for (;;) {
       status = (bool) HAL_SD_WriteBlocks(&hsd, (uint8_t*)src, block, 1, 500);  // write one 512 byte block with 500mS timeout
