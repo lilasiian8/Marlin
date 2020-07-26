@@ -47,12 +47,20 @@
   #if ENABLED(IIC_BL24CXX_EEPROM)
     #define IIC_EEPROM_SDA                  PA11
     #define IIC_EEPROM_SCL                  PA12
+<<<<<<< HEAD
     #define MARLIN_EEPROM_SIZE 0x800              // 2Kb (24C16)
   #else
     #define SDCARD_EEPROM_EMULATION               // SD EEPROM until all EEPROM is BL24CXX
     #define MARLIN_EEPROM_SIZE 0x800              // 2Kb
   #endif
 
+=======
+    #define MARLIN_EEPROM_SIZE 0x4000             // 16Kb (24c16)
+  #endif
+
+  #define SDCARD_EEPROM_EMULATION                 // SD EEPROM until all EEPROM is BL24CXX
+
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
   // SPI
   //#define SPI_EEPROM                            // EEPROM on SPI-0
   //#define SPI_CHAN_EEPROM1  ?

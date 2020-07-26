@@ -41,7 +41,6 @@ class libServo {
 
     static void pause_all_servos();
     static void resume_all_servos();
-    static void setInterruptPriority(uint32_t preemptPriority, uint32_t subPriority);
 
   private:
     Servo stm32_servo;

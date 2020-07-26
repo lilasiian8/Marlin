@@ -508,8 +508,11 @@
   #include "stm32f1/pins_MKS_ROBIN_MINI.h"      // STM32F1                                env:mks_robin_mini
 #elif MB(MKS_ROBIN_NANO)
   #include "stm32f1/pins_MKS_ROBIN_NANO.h"      // STM32F1                                env:mks_robin_nano env:mks_robin_nano35
+<<<<<<< HEAD
 #elif MB(MKS_ROBIN_NANO_V2)
   #include "stm32f1/pins_MKS_ROBIN_NANO_V2.h"   // STM32F1                                env:mks_robin_nano env:mks_robin_nano35
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 #elif MB(MKS_ROBIN_LITE)
   #include "stm32f1/pins_MKS_ROBIN_LITE.h"      // STM32F1                                env:mks_robin_lite
 #elif MB(BTT_SKR_MINI_V1_1)
@@ -543,13 +546,11 @@
 #elif MB(CCROBOT_MEEB_3DP)
   #include "stm32f1/pins_CCROBOT_MEEB_3DP.h"    // STM32F1                                env:STM32F103RC_meeb
 #elif MB(CHITU3D_V5)
-  #include "stm32f1/pins_CHITU3D_V5.h"          // STM32F1                                env:chitu_f103 env:chitu_v5_gpio_init
+  #include "stm32f1/pins_CHITU3D_V5.h"          // STM32F1                                env:chitu_f103 env:chitu_v5_gpio_init env:chitu_f103_lvgl
 #elif MB(CHITU3D_V6)
-  #include "stm32f1/pins_CHITU3D_V6.h"          // STM32F1                                env:chitu_f103
+  #include "stm32f1/pins_CHITU3D_V6.h"          // STM32F1                                env:chitu_f103 env:chitu_f103_lvgl
 #elif MB(CREALITY_V4)
   #include "stm32f1/pins_CREALITY_V4.h"         // STM32F1                                env:STM32F103RET6_creality
-#elif MB(TRIGORILLA_PRO)
-  #include "stm32f1/pins_TRIGORILLA_PRO.h"      // STM32F1                                env:trigorilla_pro
 
 //
 // ARM Cortex-M4F

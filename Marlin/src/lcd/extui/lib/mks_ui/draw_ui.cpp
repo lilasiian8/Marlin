@@ -430,7 +430,50 @@ char *creat_title_text() {
 
 #if HAS_GCODE_PREVIEW
 
+<<<<<<< HEAD
   uint32_t gPicturePreviewStart = 0;
+=======
+void gcode_preview(char *path, int xpos_pixel, int ypos_pixel) {
+  #if ENABLED(SDSUPPORT)
+    //uint8_t ress;
+    //uint32_t write;
+    volatile uint32_t i, j;
+    volatile uint16_t *p_index;
+    //int res;
+    char *cur_name;
+    uint16_t Color;
+
+    cur_name = strrchr(path, '/');
+    card.openFileRead(cur_name);
+
+    if (gPicturePreviewStart <= 0) {
+      while (1) {
+        uint32_t br = card.read(public_buf, 400);
+        uint32_t* p1 = (uint32_t *)strstr((char *)public_buf, ";gimage:");
+        if (p1) {
+          gPicturePreviewStart += (uint32_t)p1 - (uint32_t)((uint32_t *)(&public_buf[0]));
+          break;
+        }
+        else {
+          gPicturePreviewStart += br;
+        }
+        if (br < 400) break;
+      }
+    }
+
+    // SERIAL_ECHOLNPAIR("gPicturePreviewStart: ", gPicturePreviewStart, " PREVIEW_LITTLE_PIC_SIZE: ", PREVIEW_LITTLE_PIC_SIZE);
+
+    card.setIndex((gPicturePreviewStart + To_pre_view) + size * row + 8);
+    #if ENABLED(SPI_GRAPHICAL_TFT)
+      SPI_TFT.spi_init(SPI_FULL_SPEED);
+      //SPI_TFT.SetCursor(0,0);
+      SPI_TFT.SetWindows(xpos_pixel, ypos_pixel + row, 200, 1);
+      SPI_TFT.LCD_WriteRAM_Prepare();
+    #else
+      ili9320_SetWindows(xpos_pixel, ypos_pixel + row, 200, 1);
+      LCD_WriteRAM_Prepare();
+    #endif
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 
   void preview_gcode_prehandle(char *path) {
     #if ENABLED(SDSUPPORT)

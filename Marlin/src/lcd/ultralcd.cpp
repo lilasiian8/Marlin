@@ -898,6 +898,7 @@ void MarlinUI::update() {
       if (TERN0(REPRAPWORLD_KEYPAD, handle_keypad()))
         RESET_STATUS_TIMEOUT();
 
+<<<<<<< HEAD
       uint8_t abs_diff = ABS(encoderDiff);
 
       #if ENCODER_PULSES_PER_STEP > 1
@@ -918,6 +919,10 @@ void MarlinUI::update() {
       #endif
 
       const bool encoderPastThreshold = (abs_diff >= epps);
+=======
+      const float abs_diff = ABS(encoderDiff);
+      const bool encoderPastThreshold = (abs_diff >= (ENCODER_PULSES_PER_STEP));
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
       if (encoderPastThreshold || lcd_clicked) {
         if (encoderPastThreshold) {
 
@@ -926,7 +931,11 @@ void MarlinUI::update() {
             int32_t encoderMultiplier = 1;
 
             if (encoderRateMultiplierEnabled) {
+<<<<<<< HEAD
               const float encoderMovementSteps = float(abs_diff) / epps;
+=======
+              const float encoderMovementSteps = abs_diff / (ENCODER_PULSES_PER_STEP);
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 
               if (lastEncoderMovementMillis) {
                 // Note that the rate is always calculated between two passes through the
@@ -1546,17 +1555,30 @@ void MarlinUI::update() {
       const int8_t xdir = col < (LCD_WIDTH ) / 2 ? -1 : 1,
                    ydir = row < (LCD_HEIGHT) / 2 ? -1 : 1;
       if (on_edit_screen)
+<<<<<<< HEAD
         encoderDiff = epps * ydir;
+=======
+        encoderDiff = ENCODER_PULSES_PER_STEP * ydir;
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
       else if (screen_items > 0) {
         // Last 3 cols act as a scroll :-)
         if (col > (LCD_WIDTH) - 5)
           // 2 * LCD_HEIGHT to scroll to bottom of next page. (LCD_HEIGHT would only go 1 item down.)
+<<<<<<< HEAD
           encoderDiff = epps * (encoderLine - encoderTopLine + 2 * (LCD_HEIGHT)) * ydir;
         else
           encoderDiff = epps * (row - encoderPosition + encoderTopLine);
       }
       else if (!on_status_screen())
         encoderDiff = epps * xdir;
+=======
+          encoderDiff = ENCODER_PULSES_PER_STEP * (encoderLine - encoderTopLine + 2 * (LCD_HEIGHT)) * ydir;
+        else
+          encoderDiff = ENCODER_PULSES_PER_STEP * (row - encoderPosition + encoderTopLine);
+      }
+      else if (!on_status_screen())
+        encoderDiff = ENCODER_PULSES_PER_STEP * xdir;
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
     }
 
   #endif

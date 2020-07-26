@@ -2214,15 +2214,18 @@ static_assert(hbm[Z_AXIS] >= 0, "HOMING_BUMP_MM.Z must be greater than or equal 
   + ENABLED(MKS_12864OLED_SSD1306) \
   + ENABLED(U8GLIB_SH1106_EINSTART) \
   + ENABLED(OVERLORD_OLED) \
-  + ENABLED(FYSETC_242_OLED_12864) \
   + ENABLED(DGUS_LCD_UI_ORIGIN) \
   + ENABLED(DGUS_LCD_UI_FYSETC) \
   + ENABLED(DGUS_LCD_UI_HIPRECY) \
   + ENABLED(MALYAN_LCD) \
   + ENABLED(TOUCH_UI_FTDI_EVE) \
+<<<<<<< HEAD
   + ENABLED(FSMC_GRAPHICAL_TFT) \
   + ENABLED(TFT_LVGL_UI_FSMC) \
   + ENABLED(TFT_LVGL_UI_SPI)
+=======
+  + ENABLED(FSMC_GRAPHICAL_TFT)
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
   #error "Please select no more than one LCD controller option."
 #endif
 
