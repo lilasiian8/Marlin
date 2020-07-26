@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -119,7 +119,7 @@ fil_change_settings_t fc_settings[EXTRUDERS];
  *
  * Returns 'true' if heating was completed, 'false' for abort
  */
-static bool ensure_safe_temperature(const bool wait=true, const PauseMode mode=PAUSE_MODE_SAME) {
+static bool ensure_safe_temperature(const PauseMode mode=PAUSE_MODE_SAME) {
 
   #if ENABLED(PREVENT_COLD_EXTRUSION)
     if (!DEBUGGING(DRYRUN) && thermalManager.targetTooColdToExtrude(active_extruder)) {
@@ -134,13 +134,7 @@ static bool ensure_safe_temperature(const bool wait=true, const PauseMode mode=P
     UNUSED(mode);
   #endif
 
-  if (wait)
-    return thermalManager.wait_for_hotend(active_extruder);
-
-  while (ABS(thermalManager.degHotend(active_extruder) - thermalManager.degTargetHotend(active_extruder)) > TEMP_WINDOW)
-    idle();
-
-  return true;
+  return thermalManager.wait_for_hotend(active_extruder);
 }
 
 /**
@@ -162,7 +156,7 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
 ) {
   TERN(HAS_LCD_MENU,,UNUSED(show_lcd));
 
-  if (!ensure_safe_temperature(false, mode)) {
+  if (!ensure_safe_temperature(mode)) {
     #if HAS_LCD_MENU
       if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_STATUS, mode);
     #endif
@@ -271,7 +265,6 @@ bool load_filament(const float &slow_load_length/*=0*/, const float &fast_load_l
     } while (TERN0(HAS_LCD_MENU, show_lcd && pause_menu_response == PAUSE_RESPONSE_EXTRUDE_MORE));
 
   #endif
-  TERN_(HOST_PROMPT_SUPPORT, host_action_prompt_end());
 
   return true;
 }
@@ -298,7 +291,7 @@ bool unload_filament(const float &unload_length, const bool show_lcd/*=false*/,
     constexpr float mix_multiplier = 1.0;
   #endif
 
-  if (!ensure_safe_temperature(false, mode)) {
+  if (!ensure_safe_temperature(mode)) {
     #if HAS_LCD_MENU
       if (show_lcd) lcd_pause_show_message(PAUSE_MESSAGE_STATUS);
     #endif
@@ -505,7 +498,7 @@ void wait_for_confirmation(const bool is_reload/*=false*/, const int8_t max_beep
       HOTEND_LOOP() thermalManager.reset_hotend_idle_timer(e);
 
       // Wait for the heaters to reach the target temperatures
-      ensure_safe_temperature(false);
+      ensure_safe_temperature();
 
       // Show the prompt to continue
       show_continue_prompt(is_reload);
@@ -593,8 +586,6 @@ void resume_print(const float &slow_load_length/*=0*/, const float &fast_load_le
 
   // Unretract
   unscaled_e_move(PAUSE_PARK_RETRACT_LENGTH, feedRate_t(PAUSE_PARK_RETRACT_FEEDRATE));
-
-  ensure_safe_temperature();
 
   // Intelligent resuming
   #if ENABLED(FWRETRACT)

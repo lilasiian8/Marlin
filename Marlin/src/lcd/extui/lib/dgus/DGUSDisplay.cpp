@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -1180,41 +1180,6 @@ void DGUSDisplay::WriteVariable(uint16_t adr, const void* values, uint8_t values
   }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-void DGUSDisplay::WriteVariable(uint16_t adr, uint16_t value) {
-  value = (value & 0xffU) << 8U | (value >> 8U);
-  WriteVariable(adr, static_cast<const void*>(&value), sizeof(uint16_t));
-}
-
-void DGUSDisplay::WriteVariable(uint16_t adr, int16_t value) {
-  value = (value & 0xffU) << 8U | (value >> 8U);
-  WriteVariable(adr, static_cast<const void*>(&value), sizeof(uint16_t));
-}
-
-void DGUSDisplay::WriteVariable(uint16_t adr, uint8_t value) {
-  WriteVariable(adr, static_cast<const void*>(&value), sizeof(uint8_t));
-}
-
-void DGUSDisplay::WriteVariable(uint16_t adr, int8_t value) {
-  WriteVariable(adr, static_cast<const void*>(&value), sizeof(int8_t));
-}
-
-void DGUSDisplay::WriteVariable(uint16_t adr, long value) {
-    union { long l; char lb[4]; } endian;
-    char tmp[4];
-    endian.l = value;
-    tmp[0] = endian.lb[3];
-    tmp[1] = endian.lb[2];
-    tmp[2] = endian.lb[1];
-    tmp[3] = endian.lb[0];
-    WriteVariable(adr, static_cast<const void*>(&tmp), sizeof(long));
-}
-
-=======
->>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
-=======
->>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 void DGUSDisplay::WriteVariablePGM(uint16_t adr, const void* values, uint8_t valueslen, bool isstr) {
   const char* myvalues = static_cast<const char*>(values);
   bool strend = !myvalues;
