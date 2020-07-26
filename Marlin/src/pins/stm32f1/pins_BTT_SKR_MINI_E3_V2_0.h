@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 #pragma once
@@ -41,10 +41,10 @@
 
 #define PS_ON_PIN                          PC13  // Power Supply Control
 
-#define FAN1_PIN                           PC7
+#define FAN1_PIN                           PC7 //CONTROLLER FAN also used in Config_adv.h as E0 fan
 
 #ifndef CONTROLLER_FAN_PIN
-  #define CONTROLLER_FAN_PIN               FAN1_PIN
+  #define CONTROLLER_FAN_PIN               PC7 //FAN1_PIN
 #endif
 
 /**

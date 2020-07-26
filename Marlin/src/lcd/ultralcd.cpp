@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 
@@ -48,6 +48,8 @@ MarlinUI ui;
 #if LCD_HAS_WAIT_FOR_MOVE
   bool MarlinUI::wait_for_move; // = false
 #endif
+
+constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
 
 #if HAS_SPI_LCD
   #if ENABLED(STATUS_MESSAGE_SCROLLING)
@@ -440,13 +442,13 @@ bool MarlinUI::get_blink() {
           #endif
           {
             #if HAS_LCD_MENU
-                   if (RRK(EN_KEYPAD_UP))     encoderPosition -= ENCODER_PULSES_PER_STEP;
-              else if (RRK(EN_KEYPAD_DOWN))   encoderPosition += ENCODER_PULSES_PER_STEP;
+                   if (RRK(EN_KEYPAD_UP))     encoderPosition -= epps;
+              else if (RRK(EN_KEYPAD_DOWN))   encoderPosition += epps;
               else if (RRK(EN_KEYPAD_LEFT))   { MenuItem_back::action(); quick_feedback(); }
               else if (RRK(EN_KEYPAD_RIGHT))  encoderPosition = 0;
             #else
-                   if (RRK(EN_KEYPAD_UP)   || RRK(EN_KEYPAD_LEFT))  encoderPosition -= ENCODER_PULSES_PER_STEP;
-              else if (RRK(EN_KEYPAD_DOWN) || RRK(EN_KEYPAD_RIGHT)) encoderPosition += ENCODER_PULSES_PER_STEP;
+                   if (RRK(EN_KEYPAD_UP)   || RRK(EN_KEYPAD_LEFT))  encoderPosition -= epps;
+              else if (RRK(EN_KEYPAD_DOWN) || RRK(EN_KEYPAD_RIGHT)) encoderPosition += epps;
             #endif
           }
         #endif
@@ -751,19 +753,19 @@ void MarlinUI::quick_feedback(const bool clear_buttons/*=true*/) {
     //SERIAL_ECHOLNPAIR("Post Move with Axis ", int(axis), " soon.");
   }
 
-#endif // HAS_LCD_MENU
+  #if ENABLED(AUTO_BED_LEVELING_UBL)
 
-#if ENABLED(AUTO_BED_LEVELING_UBL)
-
-  void MarlinUI::external_encoder() {
-    if (external_control && encoderDiff) {
-      ubl.encoder_diff += encoderDiff;  // Encoder for UBL G29 mesh editing
-      encoderDiff = 0;                  // Hide encoder events from the screen handler
-      refresh(LCDVIEW_REDRAW_NOW);      // ...but keep the refresh.
+    void MarlinUI::external_encoder() {
+      if (external_control && encoderDiff) {
+        ubl.encoder_diff += encoderDiff;  // Encoder for UBL G29 mesh editing
+        encoderDiff = 0;                  // Hide encoder events from the screen handler
+        refresh(LCDVIEW_REDRAW_NOW);      // ...but keep the refresh.
+      }
     }
-  }
 
-#endif
+  #endif
+
+#endif // HAS_LCD_MENU
 
 /**
  * Update the LCD, read encoder buttons, etc.
@@ -841,7 +843,7 @@ void MarlinUI::update() {
         RESET_STATUS_TIMEOUT();
         if (touch_buttons & (EN_A | EN_B)) {              // Menu arrows, in priority
           if (ELAPSED(ms, next_button_update_ms)) {
-            encoderDiff = (ENCODER_STEPS_PER_MENU_ITEM) * (ENCODER_PULSES_PER_STEP) * encoderDirection;
+            encoderDiff = (ENCODER_STEPS_PER_MENU_ITEM) * epps * encoderDirection;
             if (touch_buttons & EN_A) encoderDiff *= -1;
             TERN_(AUTO_BED_LEVELING_UBL, external_encoder());
             next_button_update_ms = ms + repeat_delay;    // Assume the repeat delay
@@ -896,8 +898,34 @@ void MarlinUI::update() {
       if (TERN0(REPRAPWORLD_KEYPAD, handle_keypad()))
         RESET_STATUS_TIMEOUT();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+      uint8_t abs_diff = ABS(encoderDiff);
+
+      #if ENCODER_PULSES_PER_STEP > 1
+        // When reversing the encoder direction, a movement step can be missed because
+        // encoderDiff has a non-zero residual value, making the controller unresponsive.
+        // The fix clears the residual value when the encoder is idle.
+        // Also check if past half the threshold to compensate for missed single steps.
+        static int8_t lastEncoderDiff;
+
+        // Timeout? No decoder change since last check. 10 or 20 times per second.
+        if (encoderDiff == lastEncoderDiff && abs_diff <= epps / 2)   // Same direction & size but not over a half-step?
+          encoderDiff = 0;                                            // Clear residual pulses.
+        else if (WITHIN(abs_diff, epps / 2 + 1, epps - 1)) {          // Past half of threshold?
+          abs_diff = epps;                                            // Treat as a full step size
+          encoderDiff = (encoderDiff < 0 ? -1 : 1) * abs_diff;        // ...in the spin direction.
+        }
+        lastEncoderDiff = encoderDiff;
+      #endif
+
+      const bool encoderPastThreshold = (abs_diff >= epps);
+=======
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
       const float abs_diff = ABS(encoderDiff);
       const bool encoderPastThreshold = (abs_diff >= (ENCODER_PULSES_PER_STEP));
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
       if (encoderPastThreshold || lcd_clicked) {
         if (encoderPastThreshold) {
 
@@ -906,7 +934,15 @@ void MarlinUI::update() {
             int32_t encoderMultiplier = 1;
 
             if (encoderRateMultiplierEnabled) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+              const float encoderMovementSteps = float(abs_diff) / epps;
+=======
               const float encoderMovementSteps = abs_diff / (ENCODER_PULSES_PER_STEP);
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
+=======
+              const float encoderMovementSteps = abs_diff / (ENCODER_PULSES_PER_STEP);
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 
               if (lastEncoderMovementMillis) {
                 // Note that the rate is always calculated between two passes through the
@@ -935,7 +971,7 @@ void MarlinUI::update() {
 
           #endif // ENCODER_RATE_MULTIPLIER
 
-          encoderPosition += (encoderDiff * encoderMultiplier) / (ENCODER_PULSES_PER_STEP);
+          encoderPosition += (encoderDiff * encoderMultiplier) / epps;
           encoderDiff = 0;
         }
 
@@ -1168,7 +1204,7 @@ void MarlinUI::update() {
         //
         #if ANY_BUTTON(UP, DWN, LFT, RT)
 
-          const int8_t pulses = (ENCODER_PULSES_PER_STEP) * encoderDirection;
+          const int8_t pulses = epps * encoderDirection;
 
           if (false) {
             // for the else-ifs below
@@ -1263,7 +1299,9 @@ void MarlinUI::update() {
           case encrot2: ENCODER_SPIN(encrot1, encrot3); break;
           case encrot3: ENCODER_SPIN(encrot2, encrot0); break;
         }
-        TERN_(AUTO_BED_LEVELING_UBL, external_encoder());
+        #if BOTH(HAS_LCD_MENU, AUTO_BED_LEVELING_UBL)
+          external_encoder();
+        #endif
         lastEncoderBits = enc;
       }
 
@@ -1524,17 +1562,40 @@ void MarlinUI::update() {
       const int8_t xdir = col < (LCD_WIDTH ) / 2 ? -1 : 1,
                    ydir = row < (LCD_HEIGHT) / 2 ? -1 : 1;
       if (on_edit_screen)
+<<<<<<< HEAD
+<<<<<<< HEAD
+        encoderDiff = epps * ydir;
+=======
         encoderDiff = ENCODER_PULSES_PER_STEP * ydir;
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
+=======
+        encoderDiff = ENCODER_PULSES_PER_STEP * ydir;
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
       else if (screen_items > 0) {
         // Last 3 cols act as a scroll :-)
         if (col > (LCD_WIDTH) - 5)
           // 2 * LCD_HEIGHT to scroll to bottom of next page. (LCD_HEIGHT would only go 1 item down.)
+<<<<<<< HEAD
+<<<<<<< HEAD
+          encoderDiff = epps * (encoderLine - encoderTopLine + 2 * (LCD_HEIGHT)) * ydir;
+        else
+          encoderDiff = epps * (row - encoderPosition + encoderTopLine);
+      }
+      else if (!on_status_screen())
+        encoderDiff = epps * xdir;
+=======
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
           encoderDiff = ENCODER_PULSES_PER_STEP * (encoderLine - encoderTopLine + 2 * (LCD_HEIGHT)) * ydir;
         else
           encoderDiff = ENCODER_PULSES_PER_STEP * (row - encoderPosition + encoderTopLine);
       }
       else if (!on_status_screen())
         encoderDiff = ENCODER_PULSES_PER_STEP * xdir;
+<<<<<<< HEAD
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
     }
 
   #endif

@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 #pragma once
@@ -508,6 +508,14 @@
   #include "stm32f1/pins_MKS_ROBIN_MINI.h"      // STM32F1                                env:mks_robin_mini
 #elif MB(MKS_ROBIN_NANO)
   #include "stm32f1/pins_MKS_ROBIN_NANO.h"      // STM32F1                                env:mks_robin_nano env:mks_robin_nano35
+<<<<<<< HEAD
+<<<<<<< HEAD
+#elif MB(MKS_ROBIN_NANO_V2)
+  #include "stm32f1/pins_MKS_ROBIN_NANO_V2.h"   // STM32F1                                env:mks_robin_nano env:mks_robin_nano35
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
+=======
+>>>>>>> parent of 62614f91c... Merge branch 'bugfix-2.0.x' into Ender-3-Pro
 #elif MB(MKS_ROBIN_LITE)
   #include "stm32f1/pins_MKS_ROBIN_LITE.h"      // STM32F1                                env:mks_robin_lite
 #elif MB(BTT_SKR_MINI_V1_1)
@@ -613,7 +621,6 @@
 //
 
 #elif MB(ESPRESSIF_ESP32)
-
   #include "esp32/pins_ESP32.h"                 // ESP32                                  env:esp32
 #elif MB(MRR_ESPA)
   #include "esp32/pins_MRR_ESPA.h"              // ESP32                                  env:esp32
