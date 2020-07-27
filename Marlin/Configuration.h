@@ -835,7 +835,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-//#define S_CURVE_ACCELERATION
+#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1128,10 +1128,10 @@
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS -5
-#define Y_MIN_POS -19
+#define Y_MIN_POS -9
 #define Z_MIN_POS 0
 #define X_MAX_POS 230
-#define Y_MAX_POS 216
+#define Y_MAX_POS 226
 #define Z_MAX_POS 250
 
 /**
