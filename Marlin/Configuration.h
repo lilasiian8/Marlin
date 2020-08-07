@@ -73,7 +73,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(lilasiian8-Ender 3 Pro BLTouch E3D V6 Neopixel BMG)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(lilasiian8-Ender 3 Pro BLTouch E3D V6 Neopixel BMG DDM)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -94,7 +94,7 @@
 //#define SHOW_CUSTOM_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Statusscreen.h on the status screen.
-//#define CUSTOM_STATUS_SCREEN_IMAGE
+#define CUSTOM_STATUS_SCREEN_IMAGE
 
 // @section machine
 
@@ -134,7 +134,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "lilasiian8-v7.1 Preparing for DDM"
+#define CUSTOM_MACHINE_NAME "lilasiian8-v8 DDM"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -491,24 +491,9 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
   // Creality Ender-3
-  #define DEFAULT_Kp 37.29
-  #define DEFAULT_Ki 3.35
-  #define DEFAULT_Kd 103.89
-
-  // Ultimaker
-  //#define DEFAULT_Kp 37.83
-  //#define DEFAULT_Ki 3.64
-  //#define DEFAULT_Kd 98.4
-
-  // MakerGear
-  //#define DEFAULT_Kp 7.0
-  //#define DEFAULT_Ki 0.1
-  //#define DEFAULT_Kd 12
-
-  // Mendel Parts V9 on 12V
-  //#define DEFAULT_Kp 63.0
-  //#define DEFAULT_Ki 2.25
-  //#define DEFAULT_Kd 440
+  #define DEFAULT_Kp 24.35
+  #define DEFAULT_Ki 2.51
+  #define DEFAULT_Kd 59.06
 
 #endif // PIDTEMP
 
@@ -990,7 +975,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -55, -13, -0.90 }
+#define NOZZLE_TO_PROBE_OFFSET { -47, -1, -0.90 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -2277,9 +2262,9 @@
   #define NEOPIXEL_PIN     PA8       // LED driving pin
   //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN    5
-  #define NEOPIXEL_PIXELS 39      // Number of LEDs in the strip, larger of 2 strips if 2 neopixel strips are used
+  #define NEOPIXEL_PIXELS 23      // Number of LEDs in the strip, larger of 2 strips if 2 neopixel strips are used
   //#define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-  #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
+  #define NEOPIXEL_BRIGHTNESS 100  // Initial brightness (0-255)
   #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
   // Use a single Neopixel LED for static (background) lighting
