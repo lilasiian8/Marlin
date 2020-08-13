@@ -26,7 +26,6 @@
 #include "tft_lvgl_configuration.h"
 #include "lvgl.h"
 #include "draw_ready_print.h"
-#include "W25Qxx.h"
 #include "mks_hardware_test.h"
 
 #include "../../../../MarlinCore.h"

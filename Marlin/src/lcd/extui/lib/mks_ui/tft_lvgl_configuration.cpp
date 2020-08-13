@@ -35,7 +35,6 @@
 #include "lvgl.h"
 #include "../../../../feature/touch/xpt2046.h"
 #include "draw_ready_print.h"
-#include "W25Qxx.h"
 #include "pic_manager.h"
 
 #include "mks_hardware_test.h"

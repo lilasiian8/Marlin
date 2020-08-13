@@ -121,7 +121,7 @@ MarlinUI ui;
 #include "lcdprint.h"
 
 #include "../sd/cardreader.h"
-#include "../module/configuration_store.h"
+#include "../module/settings.h"
 #include "../module/temperature.h"
 #include "../module/planner.h"
 #include "../module/motion.h"
