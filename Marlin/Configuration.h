@@ -73,7 +73,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(lilasiian8-Ender 3 Pro BLTouch E3D V6 Neopixel BMG PrinterMods MDD)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(lilasiian8-Ender 3 Pro BLTouch E3D V6 Neopixel BMG PrinterMods MDD X Linear Rail)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -134,7 +134,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "lilasiian8-v8 MDD v3.5"
+#define CUSTOM_MACHINE_NAME "lilasiian8-v8 Linear Rail v4"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -975,7 +975,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -31, 2, -1.0 }
+#define NOZZLE_TO_PROBE_OFFSET { -31, 2, -2.3 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1115,8 +1115,8 @@
 #define Y_BED_SIZE 235
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -15
-#define Y_MIN_POS -15
+#define X_MIN_POS -17
+#define Y_MIN_POS -24
 #define Z_MIN_POS 0
 #define X_MAX_POS ( X_BED_SIZE + X_MIN_POS )
 #define Y_MAX_POS ( Y_BED_SIZE + Y_MIN_POS )
