@@ -134,7 +134,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "lilasiian8-v8 Linear Rail v4"
+#define CUSTOM_MACHINE_NAME "lilasiian8-v8 Linear Rail v4.1"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -1115,7 +1115,7 @@
 #define Y_BED_SIZE 235
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -17
+#define X_MIN_POS -5
 #define Y_MIN_POS -24
 #define Z_MIN_POS 0
 #define X_MAX_POS ( X_BED_SIZE + X_MIN_POS )
@@ -2264,7 +2264,7 @@
   //#define NEOPIXEL2_PIN    5
   #define NEOPIXEL_PIXELS 25      // Number of LEDs in the strip, larger of 2 strips if 2 neopixel strips are used
   //#define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-  #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
+  #define NEOPIXEL_BRIGHTNESS 110  // Initial brightness (0-255)
   #define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
   // Use a single Neopixel LED for static (background) lighting
