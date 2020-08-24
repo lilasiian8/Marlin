@@ -277,6 +277,28 @@
   #define DELAYED_BACKLIGHT_INIT
 #endif
 
+// FSMC/SPI TFT Panels using standard HAL/tft/tft_(fsmc|spi).h
+#if ANY(TFT_320x240, TFT_480x320, TFT_LVGL_UI_FSMC, FSMC_GRAPHICAL_TFT)
+  #define HAS_FSMC_TFT 1
+#elif ANY(TFT_320x240_SPI, TFT_480x320_SPI, TFT_LVGL_UI_SPI, SPI_GRAPHICAL_TFT)
+  #define HAS_SPI_TFT 1
+#endif
+
+// Color UI
+#if ANY(TFT_320x240, TFT_480x320, TFT_320x240_SPI, TFT_480x320_SPI)
+  #define HAS_GRAPHICAL_TFT 1
+  #define IS_ULTIPANEL
+#endif
+
+// Fewer lines with touch buttons on-screen
+#if EITHER(TFT_320x240, TFT_320x240_SPI)
+  #define HAS_UI_320x240 1
+  #define LCD_HEIGHT TERN(TOUCH_SCREEN, 6, 7)
+#elif EITHER(TFT_480x320, TFT_480x320_SPI)
+  #define HAS_UI_480x320 1
+  #define LCD_HEIGHT TERN(TOUCH_SCREEN, 6, 7)
+#endif
+
 /**
  * I2C Panels
  */

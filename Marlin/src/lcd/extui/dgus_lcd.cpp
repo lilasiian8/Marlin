@@ -16,23 +16,24 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 
 /**
- * extui_dgus_lcd.cpp
+ * dgus_lcd.cpp
  *
  * DGUS implementation for Marlin by coldtobi, Feb-May 2019
  */
 
-#include "../inc/MarlinConfigPre.h"
+#include "../../inc/MarlinConfigPre.h"
 
 #if HAS_DGUS_LCD
 
-#include "extui/ui_api.h"
-#include "extui/lib/dgus/DGUSDisplay.h"
-#include "extui/lib/dgus/DGUSDisplayDef.h"
+#include "ui_api.h"
+#include "lib/dgus/DGUSDisplay.h"
+#include "lib/dgus/DGUSDisplayDef.h"
+#include "lib/dgus/DGUSScreenHandler.h"
 
 extern const char NUL_STR[];
 
