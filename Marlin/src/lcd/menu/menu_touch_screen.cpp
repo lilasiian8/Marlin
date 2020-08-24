@@ -24,7 +24,7 @@
 
 #if BOTH(HAS_LCD_MENU, TOUCH_SCREEN_CALIBRATION)
 
-#include "menu_item.h"
+#include "menu.h"
 #include "../ultralcd.h"
 
 void touch_screen_calibration() {

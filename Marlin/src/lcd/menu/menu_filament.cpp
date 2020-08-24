@@ -28,7 +28,7 @@
 
 #if BOTH(HAS_LCD_MENU, ADVANCED_PAUSE_FEATURE)
 
-#include "menu_item.h"
+#include "menu.h"
 #include "../../module/temperature.h"
 #include "../../feature/pause.h"
 #include "../../gcode/queue.h"

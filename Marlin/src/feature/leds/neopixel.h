@@ -22,7 +22,7 @@
 #pragma once
 
 /**
- * NeoPixel support
+ * Neopixel support
  */
 
 // ------------------------

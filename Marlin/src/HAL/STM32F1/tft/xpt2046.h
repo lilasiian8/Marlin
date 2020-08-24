@@ -24,18 +24,16 @@
   #include <SPI.h>
 #endif
 
-#ifndef TOUCH_MISO_PIN
-  #define TOUCH_MISO_PIN MISO_PIN
+#if !PIN_EXISTS(TOUCH_MISO)
+  #error "TOUCH_MISO_PIN is not defined."
+#elif !PIN_EXISTS(TOUCH_MOSI)
+  #error "TOUCH_MOSI_PIN is not defined."
+#elif !PIN_EXISTS(TOUCH_SCK)
+  #error "TOUCH_SCK_PIN is not defined."
+#elif !PIN_EXISTS(TOUCH_CS)
+  #error "TOUCH_CS_PIN is not defined."
 #endif
-#ifndef TOUCH_MOSI_PIN
-  #define TOUCH_MOSI_PIN MOSI_PIN
-#endif
-#ifndef TOUCH_SCK_PIN
-  #define TOUCH_SCK_PIN  SCK_PIN
-#endif
-#ifndef TOUCH_CS_PIN
-  #define TOUCH_CS_PIN   CS_PIN
-#endif
+
 #ifndef TOUCH_INT_PIN
   #define TOUCH_INT_PIN  -1
 #endif

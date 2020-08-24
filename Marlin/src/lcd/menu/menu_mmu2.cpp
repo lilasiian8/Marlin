@@ -26,7 +26,7 @@
 
 #include "../../feature/mmu2/mmu2.h"
 #include "menu_mmu2.h"
-#include "menu_item.h"
+#include "menu.h"
 
 uint8_t currentTool;
 bool mmuMenuWait;

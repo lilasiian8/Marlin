@@ -511,9 +511,6 @@ public:
       static bool encoderRateMultiplierEnabled;
       static millis_t lastEncoderMovementMillis;
       static void enable_encoder_multiplier(const bool onoff);
-      #define ENCODER_RATE_MULTIPLY(F) (ui.encoderRateMultiplierEnabled = F)
-    #else
-      #define ENCODER_RATE_MULTIPLY(F) NOOP
     #endif
 
     // Manual Movement

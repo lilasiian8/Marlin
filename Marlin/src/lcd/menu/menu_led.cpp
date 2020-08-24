@@ -28,7 +28,7 @@
 
 #if HAS_LCD_MENU && EITHER(LED_CONTROL_MENU, CASE_LIGHT_MENU)
 
-#include "menu_item.h"
+#include "menu.h"
 
 #if ENABLED(LED_CONTROL_MENU)
   #include "../../feature/leds/leds.h"
