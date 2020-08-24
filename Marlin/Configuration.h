@@ -134,7 +134,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "lilasiian8-v8 Linear Rail v4.2"
+#define CUSTOM_MACHINE_NAME "lilasiian8-v9 XYLinear Rail"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -975,7 +975,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -31, 2, -2.6 }
+#define NOZZLE_TO_PROBE_OFFSET { -31, 2, -3 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1115,7 +1115,7 @@
 #define Y_BED_SIZE 235
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -5
+#define X_MIN_POS -30
 #define Y_MIN_POS -24
 #define Z_MIN_POS 0
 #define X_MAX_POS ( X_BED_SIZE + X_MIN_POS )
