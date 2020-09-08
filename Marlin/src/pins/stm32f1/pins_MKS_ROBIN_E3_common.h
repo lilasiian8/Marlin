@@ -33,6 +33,7 @@
 
 //#define DISABLE_DEBUG
 #define DISABLE_JTAG
+#define ENABLE_SPI2
 
 //
 // EEPROM
@@ -150,6 +151,8 @@
     #define DOGLCD_CS                       PA7
     #define DOGLCD_SCK                      PB13
     #define DOGLCD_MOSI                     PB15
+
+    #undef SHOW_BOOTSCREEN
 
   #else
 

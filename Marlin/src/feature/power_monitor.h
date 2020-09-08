@@ -89,9 +89,7 @@ public:
   #endif
 
   #if HAS_SPI_LCD
-    #if HAS_GRAPHICAL_LCD && DISABLED(LIGHTWEIGHT_UI)
-      FORCE_INLINE static bool display_enabled() { return flags != 0x00; }
-    #endif
+    FORCE_INLINE static bool display_enabled() { return flags != 0x00; }
     #if ENABLED(POWER_MONITOR_CURRENT)
       static void draw_current();
       FORCE_INLINE static bool current_display_enabled() { return TEST(flags, PM_DISP_BIT_I); }

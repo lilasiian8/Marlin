@@ -261,7 +261,7 @@
     #define SDSS                              10
     #define SD_DETECT_PIN                     14
 
-  #elif HAS_U8GLIB_I2C_OLED
+  #elif HAS_SSD1306_OLED_I2C
 
     #define BTN_EN1                           50
     #define BTN_EN2                           52

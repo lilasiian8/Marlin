@@ -26,7 +26,6 @@
  * Conditionals that need to be set before Configuration_adv.h or pins.h
  */
 
-// Kinematics
 #if ENABLED(MORGAN_SCARA)
   #define IS_SCARA 1
   #define IS_KINEMATIC 1
@@ -36,26 +35,10 @@
   #define IS_CARTESIAN 1
 #endif
 
-// MKS_LCD12864 is a variant of MKS_MINI_12864
 #if ENABLED(MKS_LCD12864)
   #define MKS_MINI_12864
 #endif
 
-/**
- * General Flags that may be set below by specific LCDs
- *
- *  DOGLCD                : Run a Graphical LCD through U8GLib (with MarlinUI)
- *  IS_ULTIPANEL          : Define LCD_PINS_D5/6/7 for direct-connected "Ultipanel" LCDs
- *  IS_ULTRA_LCD          : Ultra LCD, not necessarily Ultipanel. Used most often with NEWPANEL.
- *  IS_RRD_SC             : Common RRD Smart Controller digital interface pins
- *  IS_RRD_FG_SC          : Common RRD Full Graphical Smart Controller digital interface pins
- *  U8GLIB_ST7920         : Most common DOGM display SPI interface, supporting a "lightweight" display mode.
- *  U8GLIB_SH1106         : SH1106 OLED with I2C interface via U8GLib
- *  IS_U8GLIB_SSD1306     : SSD1306 OLED with I2C interface via U8GLib
- *  U8GLIB_SSD1309        : SSD1309 OLED with I2C interface via U8GLib
- *  U8GLIB_ST7565_64128N  : ST7565 128x64 LCD with SPI interface via U8GLib
- *  U8GLIB_LM6059_AF      : LM6059 with Hardware SPI via U8GLib
- */
 #if EITHER(MKS_MINI_12864, ENDER2_STOCKDISPLAY)
 
   #define MINIPANEL
@@ -63,11 +46,6 @@
 #elif ENABLED(CARTESIO_UI)
 
   #define DOGLCD
-  #define IS_ULTIPANEL
-
-#elif EITHER(DWIN_MARLINUI_PORTRAIT, DWIN_MARLINUI_LANDSCAPE)
-
-  #define IS_DWIN_MARLINUI 1
   #define IS_ULTIPANEL
 
 #elif ENABLED(ZONESTAR_LCD)
@@ -107,6 +85,7 @@
 
 #elif ANY(miniVIKI, VIKI2, ELB_FULL_GRAPHIC_CONTROLLER, AZSMZ_12864)
 
+  #define IS_ULTRA_LCD
   #define DOGLCD
   #define IS_ULTIPANEL
 
@@ -255,9 +234,9 @@
 
 // 128x64 I2C OLED LCDs - SSD1306/SSD1309/SH1106
 #if ANY(U8GLIB_SSD1306, U8GLIB_SSD1309, U8GLIB_SH1106)
-  #define HAS_U8GLIB_I2C_OLED 1
+  #define HAS_SSD1306_OLED_I2C 1
 #endif
-#if HAS_U8GLIB_I2C_OLED
+#if HAS_SSD1306_OLED_I2C
   #define IS_ULTRA_LCD
   #define DOGLCD
 #endif
@@ -392,6 +371,7 @@
   #define IS_ULTRA_LCD
   #define NEWPANEL
 #endif
+
 #if ENABLED(IS_ULTRA_LCD)
   #define ULTRA_LCD
 #endif
@@ -500,7 +480,7 @@
   #undef DISABLE_INACTIVE_EXTRUDER
 #endif
 
-// Průša MK2 Multiplexer and MMU 2.0 force SINGLENOZZLE
+// Prusa MK2 Multiplexer and MMU 2.0 force SINGLENOZZLE
 #if EITHER(MK2_MULTIPLEXER, PRUSA_MMU2)
   #define SINGLENOZZLE
 #endif
