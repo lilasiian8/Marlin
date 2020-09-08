@@ -45,7 +45,7 @@
  */
 void GcodeSuite::G12() {
   // Don't allow nozzle cleaning without homing first
-  if (axis_unhomed_error()) return;
+  if (homing_needed_error()) return;
 
   const uint8_t pattern = parser.ushortval('P', 0),
                 strokes = parser.ushortval('S', NOZZLE_CLEAN_STROKES),

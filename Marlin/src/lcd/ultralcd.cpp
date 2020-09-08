@@ -79,7 +79,7 @@ MarlinUI ui;
   #endif
   void MarlinUI::buzz(const long duration, const uint16_t freq) {
     #if ENABLED(PCA9632_BUZZER)
-      pca9632_buzz(duration, freq);
+      PCA9632_buzz(duration, freq);
     #elif USE_BEEPER
       buzzer.tone(duration, freq);
     #endif
@@ -369,10 +369,6 @@ void MarlinUI::init() {
     #endif
 
   #endif // HAS_SHIFT_ENCODER
-
-  #if ENABLED(SDSUPPORT) && PIN_EXISTS(SD_DETECT)
-    SET_INPUT_PULLUP(SD_DETECT_PIN);
-  #endif
 
   #if HAS_ENCODER_ACTION && HAS_SLOW_BUTTONS
     slow_buttons = 0;
