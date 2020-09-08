@@ -134,7 +134,7 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "lilasiian8-v9.1 XYLinear Rail"
+#define CUSTOM_MACHINE_NAME "lilasiian8-v10 back2Marlin"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -1118,8 +1118,8 @@
 #define X_MIN_POS -15
 #define Y_MIN_POS -24
 #define Z_MIN_POS 0
-#define X_MAX_POS ( X_BED_SIZE + X_MIN_POS )
-#define Y_MAX_POS ( Y_BED_SIZE + Y_MIN_POS )
+#define X_MAX_POS X_MIN_POS
+#define Y_MAX_POS Y_MIN_POS
 #define Z_MAX_POS 250
 
 /**
@@ -1929,7 +1929,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // ReprapWorld Graphical LCD
@@ -2015,7 +2015,7 @@
 // This is RAMPS-compatible using a single 10-pin connector.
 // (For CR-10 owners who want to replace the Melzi Creality board but retain the display)
 //
-#define CR10_STOCKDISPLAY
+//#define CR10_STOCKDISPLAY
 
 //
 // Ender-2 OEM display, a variant of the MKS_MINI_12864
